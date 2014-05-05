@@ -1,0 +1,71 @@
+!!!
+%html
+  %head
+  %body.slideshow
+    #slides
+      %ul.slides-container 
+        %li
+          %img=image_tag "http://upload.wikimedia.org/wikipedia/commons/6/62/VW_K%C3%A4fer_mit_Ski.jpg"
+          .container
+            .contrast
+              %h1#headline="Ipsom Lorem kasdlkfjhasdlkfjhasldkfjh asdlkjfal sdkjfh"
+              %p="Some explainer text.... "
+              
+        %li
+          %img=image_tag "https://dl.dropboxusercontent.com/sh/rs011u7cim87yah/BM-scCaIhi/DSC_0035.JPG?token_hash=AAGeO5syRPHDp_Ycs05yqVgR8MCAh-Wiu4lHz-JI52cCCQ"
+          .container
+            .contrast
+              %h1#headline="Ipsom Lorem kasdlkfjhasdlkfjhasldkfjh asdlkjfal sdkjfh"
+              %p="Some explainer text.... "
+        %li
+          %img=image_tag "http://upload.wikimedia.org/wikipedia/commons/6/62/VW_K%C3%A4fer_mit_Ski.jpg"
+          .container
+            .contrast
+              %h1#headline="Ipsom Lorem kasdlkfjhasdlkfjhasldkfjh asdlkjfal sdkjfh"
+              %p="Some explainer text.... "
+        %li
+          %img=image_tag "https://dl.dropboxusercontent.com/sh/rs011u7cim87yah/BM-scCaIhi/DSC_0035.JPG?token_hash=AAGeO5syRPHDp_Ycs05yqVgR8MCAh-Wiu4lHz-JI52cCCQ"
+          .container
+            .contrast
+              %h1#headline="Ipsom Lorem kasdlkfjhasdlkfjhasldkfjh asdlkjfal sdkjfh"
+              %p="Some explainer text.... "
+        %li
+          %img=image_tag "http://upload.wikimedia.org/wikipedia/commons/6/62/VW_K%C3%A4fer_mit_Ski.jpg"
+          .container
+            .contrast
+              %h1#headline="Ipsom Lorem kasdlkfjhasdlkfjhasldkfjh asdlkjfal sdkjfh"
+              %p="Some explainer text.... "
+        %li
+          %img=image_tag "https://dl.dropboxusercontent.com/sh/rs011u7cim87yah/BM-scCaIhi/DSC_0035.JPG?token_hash=AAGeO5syRPHDp_Ycs05yqVgR8MCAh-Wiu4lHz-JI52cCCQ"
+          .container
+            .contrast
+              %h1#headline="Ipsom Lorem kasdlkfjhasdlkfjhasldkfjh asdlkjfal sdkjfh"
+              %p="Some explainer text.... "
+
+      %nav.slides-navigation
+        %a.next{href: "#"}
+          .icon-chevron-right
+        %a.prev{href: "#"}
+          .icon-chevron-left
+
+
+  :javascript
+    $(function() {
+      $('#slides').superslides({
+      });
+    });
+    $(function() {
+      var $slides = $('#slides');
+
+      Hammer($slides[0]).on("swipeleft", function(e) {
+        $slides.data('superslides').animate('next');
+      });
+
+      Hammer($slides[0]).on("swiperight", function(e) {
+        $slides.data('superslides').animate('prev');
+      });
+
+      $slides.superslides({
+        hashchange: true
+      });
+    });

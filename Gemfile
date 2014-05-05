@@ -7,7 +7,6 @@ gem 'rails', '3.2.14'
 
 gem 'pg'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -21,6 +20,31 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'pg'
+
+gem "haml-rails"
+gem 'pry-rails'
+gem 'jquery-rails'
+
+gem "nifty-generators", :group => :development
+
+group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  
+  gem 'annotate'
+  gem 'quiet_assets'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+  gem "rspec-rails"
+  gem "shoulda"
+  gem 'shoulda-matchers'
+  gem "database_cleaner"
+  gem "capybara"
+  gem "factory_girl_rails"
+  gem "faker"
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -36,3 +60,5 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+gem "mocha", :group => :test
