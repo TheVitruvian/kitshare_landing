@@ -20,7 +20,6 @@
 .logo-top {
   font-size: 4em;
   padding-left: 10%;
-  padding-top: 10%;
   color: #67cae9;
   font-family: 'Harabara';
   letter-spacing: 2px;
@@ -116,7 +115,7 @@
   *vertical-align: auto;
   zoom: 1;
   *display: inline;
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=");
+  
   margin: 2px;
   overflow: hidden;
   text-indent: -100%;
@@ -172,7 +171,17 @@
   -o-border-radius: 3px;
   border-radius: 3px;
   margin-top: 40px;
-  margin-left: 120px;
+  margin-left: 10%;
 }
+
+.social-media{
+  float: right;
+  padding-right: 10%;
+    a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
 
 
