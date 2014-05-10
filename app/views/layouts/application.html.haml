@@ -12,9 +12,13 @@
       %span.logo-top="Kit"
       %span.logo-bottom="Share"
       %span.social-media
-        =image_tag "facebook-3-48.png"
-        =image_tag "twitter-3-48.png"
-
+        = link_to image_tag("facebook-3-48.png"), "https://www.facebook.com/Kitshare"
+        = link_to image_tag("twitter-3-48.png"), "https://twitter.com/kitshare"
+        = link_to image_tag("blogger-3-48.png"), "#"
       %hr
+      .flash
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :id => "flash_#{name}"
+
   %section    
     = yield

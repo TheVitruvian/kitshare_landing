@@ -150,12 +150,13 @@
   padding: 10px 20px;
 }
 
-#headline{
+.headline{
   font-family: 'Harabara';
   color: white;
   font-family: 'Lato', sans-serif;
   font-weight: 900;
   font-style: italic;
+  margin: 5px;
 }
 
 .contrast{
@@ -183,5 +184,24 @@
   }
 }
 
+.explainer{
+  font-weight: bold;
+}
 
+.text{
+  resize:none;
+}
 
+.inputs{
+  width: auto;
+}
+
+.radio-inline{
+  display: inline;
+}
+
+.flash{
+  background-color: #67cae9;
+  color: white;
+  text-align: center;
+}
