@@ -48,7 +48,7 @@
           .container
             .contrast 
               %h1.headline="What do you think...?"
-              = form_for @feedback, :url => "feedback#create" do |f|
+              = form_for @feedback, :url => "feedback" do |f|
                 %p= f.text_field :name, placeholder: :Name, class: "inputs"
                 = f.radio_button :opinion, "Nice idea man", class: "radio-inline"
                 = f.label "Nice idea man", class: "radio-inline"
