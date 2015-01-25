@@ -1,24 +1,25 @@
 !!!
 %html
   %head
-    %title Kitshare
-    = stylesheet_link_tag "application", :media => "all"
-    = javascript_include_tag "application"
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %title= content_for?(:title) ? yield(:title) : 'KitShare'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Kitshare'}"}
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    -# Modernizr is required for Zurb Foundation
+    = javascript_include_tag 'vendor/modernizr'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    %script{:src => "js/foundation/foundation.equalizer.js"}
     = csrf_meta_tags
-    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Lato:700,900italic", rel: "stylesheet", type: "text/css"
+    = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Lato:700,900italic|Droid+Sans:400,700", rel: "stylesheet", type: "text/css"
 
-  %body 
-    %header.top-bar
-      %span.logo-top="Kit"
-      %span.logo-bottom="Share"
-      %span.social-media
-        = link_to image_tag("facebook-3-48.png"), "https://www.facebook.com/Kitshare"
-        = link_to image_tag("twitter-3-48.png"), "https://twitter.com/kitshare"
-        = link_to image_tag("blogger-3-48.png"), "http://blog.kitshare.org"
-      %hr
-      .flash
-        - flash.each do |name, msg|
-          = content_tag :div, msg, :id => "flash_#{name}"
+    %meta{content: "width=device-width, user-scalable=no", name: "viewport"}/
+    
+  %body
+    %header
+      = render 'layouts/navigation'
+    %main{:role => "main"}
+      = render 'layouts/messages'
+    
 
-  %section    
-    = yield
+    %section    
+      = yield

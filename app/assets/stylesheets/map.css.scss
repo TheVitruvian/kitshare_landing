@@ -1,0 +1,28 @@
+
+
+#map-canvas-global {
+  	height: calc(100vh - 45px);
+ }
+
+@media only screen and (min-width: 40.063em) and (max-width: 64em) { 
+	#map-canvas-global {
+  	height: 60vh;
+ }
+}
+
+@media only screen and (max-width: 40em) { 
+	#map-canvas-global {
+  	height: 50vh;
+ }
+}
+
+#map-canvas-global img { 
+  max-width: none;
+}
+#map-canvas-global label { 
+  width: auto; display:inline; 
+} 
+
+.thumbnail {
+	width: 15em;
+}

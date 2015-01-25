@@ -9,7 +9,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-module KitshareLanding
+module Kitshare
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -32,6 +32,10 @@ module KitshareLanding
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    # For Foundation 5
+    config.assets.precompile += %w( vendor/modernizr )
+
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
@@ -58,9 +62,5 @@ module KitshareLanding
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-
-    config.assets.initialize_on_precompile = false
-    
-    config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end

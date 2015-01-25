@@ -15,7 +15,8 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: kitshare_landing_development
+  database: kitshare_development
+
 
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -39,11 +40,11 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: kitshare_landing_test
+  database: kitshare_test
 
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: kitshare_landing_production
+  database: kitshare_production
 

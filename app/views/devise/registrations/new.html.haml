@@ -1,0 +1,48 @@
+.main-image
+  .centre-opacity
+    = form_for(resource, as: resource_name, url:  registration_path(resource_name)) do |f|
+      = devise_error_messages!
+      .row.collapse
+        .row.collapse
+          %fieldset
+            %legend.kitshare-blue Sign up:
+            %fieldset
+              %legend.kitshare-blue Profile picture...
+              = f.file_field :profile_picture
+            .small-3.large-2.columns
+              %span.prefix First name
+            .small-9.large-10.columns
+              = f.text_field :first_name, autofocus: true, placeholder: "First name"
+            .small-3.large-2.columns
+              %span.prefix Last name
+            .small-9.large-10.columns  
+              = f.text_field :last_name, placeholder: "Last name"
+            .small-3.large-2.columns
+              %span.prefix Address
+            .small-9.large-10.columns    
+              = f.text_field :address, placeholder: "Address"
+            .small-3.large-2.columns
+              %span.prefix Postcode
+            .small-9.large-10.columns    
+              = f.text_field :postcode, placeholder: "Postcode"
+            .small-3.large-2.columns
+              %span.prefix User name
+            .small-9.large-10.columns  
+              = f.text_field :user_name,  placeholder: "User name"
+            .small-3.large-2.columns
+              %span.prefix Email
+            .small-9.large-10.columns  
+              = f.email_field :email,  placeholder: "Email"
+            .small-3.large-2.columns
+              %span.prefix Password
+            .small-9.large-10.columns
+              = f.password_field :password, autocomplete: "off", placeholder: "Password"
+            .small-3.large-2.columns
+              %span.prefix Password confirmation
+            .small-9.large-10.columns
+              = f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirmation"
+            .form-actions
+              = f.button "Sign up", class: "button right" 
+            
+            = render "devise/shared/links"
+

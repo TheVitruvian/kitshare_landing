@@ -1,4 +1,4 @@
-KitshareLanding::Application.configure do
+Kitshare::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -15,6 +15,19 @@ KitshareLanding::Application.configure do
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  config.action_mailer.delivery_method = :smtp 
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true 
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.smtp_settings = { 
+  address: "smtp.mandrillapp.com", 
+  port: 587, 
+  enable_starttls_auto: true, 
+  user_name: ENV["MANDRILL_USERNAME"], 
+  password: ENV["MANDRILL_API_KEY"] 
+}
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

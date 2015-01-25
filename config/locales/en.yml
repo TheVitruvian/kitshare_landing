@@ -3,3 +3,9 @@
 
 en:
   hello: "Hello world"
+
+en:
+  mailboxer:
+    message_mailer:
+      subject_new: 'Kitshare message: %{subject}'
+      subject_reply: 'Kitshare reply: %{subject}'

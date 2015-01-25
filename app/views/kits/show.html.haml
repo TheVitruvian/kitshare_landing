@@ -1,0 +1,10 @@
+%p#notice= notice
+.row
+  -@kit.kit_photos.each do |p|
+    =image_tag p
+    
+
+
+= link_to 'Edit', edit_kit_path(@kit)
+\|
+= link_to 'Back', kits_path

@@ -1,0 +1,142 @@
+= simple_form_for(@kit) do |f|
+  = f.error_notification
+  .row
+    .row
+      %fieldset.field-radius
+        %legend.kitshare-blue.field-radius Kit Photos :
+        = file_field_tag "kit_photos[]", type: :file, multiple: true
+
+        / light box from Foundation? Need to consider upload as well
+    .row{"data-equalizer" => ""}
+      .large-6.columns
+        .row.collapse
+          %fieldset.field-radius{"data-equalizer-watch" => ""}
+            %legend.kitshare-blue.field-radius Kit Details:
+            .small-3.large-2.columns
+              %span.prefix Title
+            .small-9.large-10.columns
+              = f.text_field :title, autofocus: true
+            .small-3.large-2.columns
+              %span.prefix Description
+            .small-9.large-10.columns  
+              = f.text_area :description, :size => '80x10', placeholder: "Optional..."
+
+
+      .large-6.columns
+        .row.collapse
+          %fieldset.field-radius{"data-equalizer-watch" => ""}
+            %legend.kitshare-blue.field-radius Kit Type:
+            .small-3.large-2.columns
+              %span.prefix Category
+            .small-9.large-10.columns
+              = f.select :category, options_for_select(""), prompt: "Select..."
+            .small-3.large-2.columns
+              %span.prefix Kind
+            .small-9.large-10.columns
+              = f.select :kind, options_for_select("")
+            .small-3.large-2.columns
+              %span.prefix Type
+            .small-9.large-10.columns
+              = f.select :sub_kind, options_for_select("")
+            .small-3.large-2.columns
+              %span.prefix Condition
+            .small-9.large-10.columns
+              = f.select :condition, options_for_select(%w{ New Excellent Good Average Poor }), prompt: "Select..."
+      
+    .row{"data-equalizer" => ""}
+      .large-6.columns
+        .row.collapse
+          %fieldset.field-radius{"data-equalizer-watch" => ""}
+            %legend.kitshare-blue.field-radius Pricing details:
+            .small-3.large-2.columns
+              %span.prefix Daily
+            .small-9.large-10.columns
+              = f.number_field :daily_price, placeholder: "Daily"
+              / needs to be restricted to +ve and exclude characters
+            .small-3.large-2.columns
+              %span.prefix Weekly
+            .small-9.large-10.columns
+              = f.number_field :weekly_price, placeholder: "Weekly"
+            .small-3.large-2.columns
+              %span.prefix Monthly
+            .small-9.large-10.columns
+              = f.number_field :monthly_price, placeholder: "Monthly"
+            .small-4.columns
+              %span.prefix Insurance needed?
+            .small-8.columns
+              = f.check_box :insurance_required
+      
+      .large-6.columns
+        .row.collapse
+          %fieldset.field-radius{"data-equalizer-watch" => ""}
+            %legend.kitshare-blue.field-radius Kit Location:
+            .small-3.large-2.columns
+              %span.prefix Address
+            .small-9.large-10.columns
+              = f.text_field :location
+
+
+      
+  .form-actions
+    = f.button :submit, class: "button right"
+
+
+:javascript
+  //<![CDATA[
+  $(window).load(function(){
+  var data = {
+      'Skiing': {
+          'Clothes': ["Jacket", "Trousers", "Gloves", "Base layers"],
+          'Skis': ["All Mountain", "Race", "Powder"],
+          'Bindings': ["N/a"]
+      },
+      'Snowboarding': {
+          'Board': ["Racing", "Park"],
+          'Boots': ["Soft", "Hard"]
+      }
+  },
+  $a = $('#kit_category'); // The dropdowns
+  $b = $('#kit_kind');
+  $c = $('#kit_sub_kind');
+   
+  for (var prop in data) {
+      var first = prop;
+      $a.append($("<option>"). // Add options
+      attr("value", first).
+      text(first));
+  }
+   
+  $a.change(function () {
+      var firstkey = $(this).val();
+      $b.html(''); // Clear existing options in second dropdown
+      for (var prop in data[firstkey]) {
+          var second = prop;
+          $b.append($("<option>"). // Add options
+          attr("value", second).
+          text(second));
+      }
+      $b.change();
+  }).change(); // Trigger once to add options at load of first choice
+   
+  $b.change(function () {
+      var firstKey = $a.val(),
+          secondKey = $(this).val();
+      $c.html(''); // Clear existing options in second dropdown
+      for(var i = 0; i < data[firstKey][secondKey].length; i++) {
+          var third = data[firstKey][secondKey][i]
+          $c.append($("<option>"). // Add options
+          attr("value", third).
+          text(third));
+      }
+      $c.change();
+  }).change();
+  });
+
+
+  $(document).foundation({
+  equalizer : {
+    // Specify if Equalizer should make elements equal height once they become stacked.
+    equalize_on_stack: false
+  }});
+
+

@@ -1,0 +1,251 @@
+$kitshare-blue : #67cae9;
+$oil: #333333;
+
+
+@font-face {
+   font-family: 'Harabara';
+    src: font-url('Harabara.eot');
+    src: font-url('Harabara.svg#harabara') format('svg'), 
+         font-url('Harabara.eot?#iefix') format('embedded-opentype'),
+         font-url('Harabara.woff') format('woff'),
+         font-url('Harabara.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.rating-width{
+  min-width: 100px;
+  text-align: center;
+}
+
+.profile-img{
+    height:100px;
+    width:100px;
+    overflow:hidden;
+    border-radius:50%;
+    margin: auto;
+}
+
+.profile{
+  color: $oil;
+  text-align: left;
+}
+
+.kits{
+
+}
+.kits:hover{
+  background-color: grey;
+  border-radius: 3px;
+}
+
+.logo{
+  height: 90px;
+  border-radius: 90%;
+
+}
+
+.logo-image{
+  height:40px;
+}
+
+@media screen and (max-width: 767px) {
+  .slides-navigation {
+    display: none;
+  }
+  .header-padding {
+  
+  }
+}
+
+.logo{
+  font-size: 1.5em;
+  color: #67cae9;
+  font-family: 'Harabara';
+  letter-spacing: 2px;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  a { 
+    text-decoration: none; color: #67cae9;
+  }
+}
+
+.slides-pagination a {
+  width: 15px;
+  height: 15px;
+  margin: 5px 2px;
+  border-color: black;
+  -webkit-box-shadow: 0 1px 1px black;
+  -moz-box-shadow: 0 1px 1px black;
+  box-shadow: 0 1px 1px black;
+  color: white;
+}
+.slides-pagination a.current {
+  background: white;
+}
+
+.social-media{
+  height: 34px;
+}
+
+.social-media:hover{
+  opacity: 0.5;
+  transition: opacity 300ms ease-out
+}
+
+#slides {
+  position: relative;
+}
+#slides .slides-container {
+  display: none;
+}
+
+#slides .scrollable {
+  *zoom: 1;
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
+}
+
+#slides .scrollable:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.slides-navigation {
+  margin: 0 auto;
+  position: absolute;
+  z-index: 3;
+  top: 46%;
+  width: 100%;
+}
+.slides-navigation a {
+  position: absolute;
+  display: block;
+}
+.slides-navigation a.prev {
+  position: absolute;
+  left: 0;
+  color: white;
+  z-index: 10;
+  text-decoration: none;
+}
+.slides-navigation a.next {
+  position: absolute;
+  right: 0;
+  color: white;
+  z-index: 10;
+  text-decoration: none;
+}
+
+.slides-pagination {
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+}
+.slides-pagination a {
+  border: 2px solid white;
+  border-radius: 15px;
+  width: 10px;
+  height: 10px;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  
+  margin: 2px;
+  overflow: hidden;
+  text-indent: -100%;
+}
+.slides-pagination a.current {
+  background: white;
+}
+
+.icon-chevron-left:before {
+  content: '\2039';
+  font-size: 10em;
+  z-index: 3;
+  font-family: 'harabara';
+  color: white;
+  text-decoration: none;
+}
+
+.icon-chevron-right:before {
+  content: '\203a';
+  font-size: 10em;
+  z-index: 3;
+  font-family: 'harabara';
+  color: white;
+  text-decoration: none;
+}
+
+.headline{
+  font-family: 'Harabara';
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  margin: 5px;
+}
+
+.contrast{
+  color: white;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 1px 10px;
+  -webkit-box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  margin-top: 3%;
+  max-width: 550px;
+}
+
+.absolute {
+  position: absolute;
+  z-index: 10;
+}
+
+.nav-links{
+  float: right;
+    a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.explainer{
+  font-weight: bold;
+}
+
+.text{
+  resize:none;
+}
+
+.inputs{
+  width: auto;
+}
+
+.radio-inline{
+  display: inline;
+}
+
+.flash{
+  background-color: #67cae9;
+  color: white;
+  text-align: center;
+}
+
+.header-padding {
+  padding-top: 2em;
+}

@@ -12,6 +12,7 @@ gem 'pg'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+  gem 'jquery-fileupload-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -19,19 +20,36 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-gem 'pg'
-
+gem 'mailboxer'
+gem 'foundation-rails'
 gem "haml-rails"
-gem 'pry-rails'
+gem 'html2haml'
+gem 'devise'
+gem "omniauth-google-oauth2"
+gem 'authlogic', :git => 'git://github.com/binarylogic/authlogic.git'
+gem "textacular", '~> 3.0'
 gem 'jquery-rails'
+gem 'simple_form'
+gem 'geocoder'
+gem 'gmaps4rails'
+gem 'cancancan', '~> 1.9'
+gem "omniauth"
+gem "omniauth-linkedin-oauth2"
+gem "ckeditor_rails"
+gem 'carrierwave'
+gem 'rmagick', require: false
+gem "fog", "~> 1.3.1"
+gem 'acts_as_votable', '~> 0.8.0'
+gem 'plupload-rails'
+
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 gem "nifty-generators", :group => :development
 
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
-  
+  gem 'rails_layout'
   gem 'annotate'
   gem 'quiet_assets'
   gem 'better_errors'

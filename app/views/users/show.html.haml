@@ -1,0 +1,125 @@
+.main-image
+  .row
+    .large-3.columns.header-padding
+      .panel.radius.callout
+        .text-center
+          -if @user.role.present?
+            %h4=@user.role
+          -if @user == current_user
+            %p="Welcome back #{@user.first_name}"
+          .profile-img
+            -if @user.profile_picture.present?
+              = image_tag @user.profile_picture
+            -else
+              = image_tag "placeholder.png"
+          %a.p{"aria-controls" => "drop", "aria-expanded" => "false", "data-dropdown" => "drop", "data-options"=>"align:right"}
+            = "#{@user.user_name} &raquo".html_safe
+            #drop.f-dropdown.content{"aria-hidden" => "true", "data-dropdown-content" => "", :tabindex => "-1"}
+              -if @user.last_3_endorsements.present?
+                - @endorsements.each_with_index do |e, i|
+                  .rating-hide{:id => "end-rating#{i+1}"}
+                    = e["rating"]
+                  .rating-show.text-center{:id => "rating#{i+1}"}
+                  %strong.text-center= e["title"]
+                  .text-center= e["content"]
+                  %hr
+              -else
+                ="#{@user.user_name} has no endorsements yet"
+        %hr
+        .row
+          .label.radius Reply %: 
+          .progress
+            %span.meter{:style => "width: #{@user.replies_percentage}%"}
+          .label.radius Rating:
+          %span#user-rating
+            #user-score
+              = @user.rating
+
+        .row
+          .label.radius Has insurance:
+          = check_box_tag "" , "" , @user.insurance_end.future? , disabled: true
+        -if @user != current_user
+          %hr
+          .row
+            .label.radius="Rented off #{@user.first_name}? Rate them!"
+            =form_for [@user, @user.endorsements.build] do |f|
+              #given-rating.text-center
+              = f.hidden_field :rating, id: "rating", disabled: true
+              = f.text_field :title, placeholder: "Title...(extra points for puns)"
+              = f.text_area :content, placeholder: "E.g.'#{@user.first_name} was an utter legend!'", size: "30"
+              = f.submit "Rate", class: "button radius expand", id: "rate"
+    
+
+
+    .large-9.columns.header-padding
+      .panel.radius.callout
+        =@user.bio
+        =@user.activities
+        =@user.why_on
+    
+    .large-9.columns.kit
+      %dl.sub-nav
+        %dt Filter:
+        %dd.active
+          %a{:href => "#"} All
+        %dd
+          %a{:href => "#"} Active
+        %dd
+          %a{:href => "#"} Pending
+        %dd
+          %a{:href => "#"} Suspended
+
+      -@kits.each do |kit|
+        .kits
+          .large-3.columns
+            .profile-img
+              / -if kit.kit_photos.find(:primary == true).present
+              /   = kit.kit_photos.find(:primary == true)
+              / -else
+              = image_tag "logo.png" 
+          .large-2.columns
+            .label.radius.secondary.text-center
+              =kit.category
+            .label.radius.secondary.text-center
+              =kit.kind
+            -if kit.sub_kind.present?
+              .label.radius.secondary.text-center
+                =kit.sub_kind 
+
+          .large-7.columns
+            %h5=link_to "#{kit.title}", kit
+            %p= kit.description
+        %hr
+
+    
+
+
+  :javascript
+    $('#user-rating').raty({ readOnly: true, score: parseFloat($('#user-score').text()) , path: '/assets' });
+    $('#user-score').hide();
+  
+  :javascript
+    $('#rating1').raty({ readOnly: true, score: parseFloat($('#end-rating1').text()) , path: '/assets' });
+    $('#end-rating1').hide();
+
+  :javascript
+    $('#rating2').raty({ readOnly: true, score: parseFloat($('#end-rating2').text()) , path: '/assets' });
+    $('#end-rating2').hide();
+
+  :javascript
+    $('#rating3').raty({ readOnly: true, score: parseFloat($('#end-rating3').text()) , path: '/assets' });
+    $('#end-rating3').hide();
+
+  :javascript
+    $('#given-rating').raty({half: true, scoreName: 'endorsement[rating]', path: '/assets'})
+
+  :javascript
+    $('#new_endorsement').submit(function(){
+      $('#rating').val(($('#given-rating').raty('score')));
+    });
+
+  
+
+
+
+

@@ -1,0 +1,52 @@
+
+
+-if current_user
+  %ul.right
+    %li
+      = link_to "Messages", conversations_path
+    %li
+      = link_to "Add Some Kit", new_kit_path
+    %li
+      = link_to "Rent Some Kit", kits_path(:view => "new")
+    %li.has-dropdown
+      = link_to "#{current_user.user_name}", "#"
+      %ul.dropdown
+        %li
+          = link_to(current_user) do
+            %span.label.radius.text-center="Reply %:"
+            .progress
+              %span.meter{:style => "width: #{current_user.replies_percentage}%"}
+            .profile-img
+              = image_tag(current_user.profile_picture)
+            .rating.rating-width 
+              #score
+                = current_user.rating
+            
+            
+        %li
+          = link_to "Payment", "#"
+        %li
+          = link_to "Other", "#"
+        %li
+          = link_to "Signout", send("destroy_user_session_path"), method: :delete
+
+    
+    
+
+-else
+  %ul.right
+    %li
+      = link_to image_tag("facebook-3-48.png", class: "social-media"), "https://www.facebook.com/Kitshare"
+    %li
+      = link_to image_tag("twitter-3-48.png", class: "social-media"), "https://twitter.com/kitshare"
+    %li
+      = link_to image_tag("blogger-3-48.png", class: "social-media"), "http://blog.kitshare.org"
+    / %li
+    /   = link_to "Look around", kits_path(view: "new"), class: "button" 
+
+:javascript
+  $('.rating').raty({ readOnly: true, score: parseFloat($('#score').text()) , path: '/assets' });
+  $('#score').hide();
+
+
+

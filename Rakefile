@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-KitshareLanding::Application.load_tasks
+Kitshare::Application.load_tasks
